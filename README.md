@@ -8,12 +8,10 @@
   - [Turn on Auto Save and Format on Save](#turn-on-auto-save-and-format-on-save)
   - [Key Takeaways](#key-takeaways)
 - [Grammarly](#grammarly)
-  - [Learning Objectives](#learning-objectives)
   - [Part 1: Manual Error Detection](#part-1-manual-error-detection)
   - [Part 2: Grammarly Analysis](#part-2-grammarly-analysis)
   - [Part 3: Reflection](#part-3-reflection)
   - [Key Takeaway](#key-takeaway)
-
 
 ## Key Concepts
 
@@ -21,6 +19,10 @@
 * A **linter** or linting tool is the specialized tool for performing linting analysis.
 
 ## Linting
+
+Take a look at the file `src/index.js` — it has functional code but it is riddled with *code quality* errors. There are 22 total errors according to our style guide!
+
+What is the most effective and efficient way to fix them?
 
 **Linting** is the automated process of analyzing source code for potential errors, bugs, stylistic inconsistencies, and suspicious constructs. This analysis is performed by a specialized tool called a "linter" or "linting tool."
 
@@ -30,7 +32,7 @@ A linting tool like **eslint** is essentially Grammarly for your code.
 
 We follow Airbnb's code style rules which is widely recognized in the industry for its clean and deliberate rules.
 
-Check the `package.json` file and you'll see that we have a few dependencies related to eslint and Airbnb's code style:
+Look at the `package.json` file and you'll see that we have a few dependencies related to eslint and Airbnb's code style:
 
 ```json
 "devDependencies": {
@@ -68,16 +70,18 @@ It will spit out a report of the code style errors.
 
 
 #### How the Config File Works
-The report will mostly highlight rules that are defined by Airbnb's style guide, but at Marcy we've defined a few of our own rules. Look at the `.eslintrc.js` file:
+The report will mostly highlight rules that are defined by Airbnb's style guide, but at Marcy we've defined a few of our own rules. 
+
+Look at the `.eslintrc.js` file ("rc" is short for "run command" and is a standard way to name configuration files that will be used for a certain command or program):
 
 - `env`: Tells ESLint which global variables are available.`browser: true` recognizes `window`, `document`, etc. `jest: true` recognizes `describe`, `test`, `expect`. Without these, ESLint would flag these as undefined variables.
 - `extends: 'airbnb-base'`: Imports all of Airbnb's rules as your starting point. This is doing the heavy lifting—you get their entire opinionated style guide in one line.
 - `parserOptions`: Tells ESLint what JavaScript syntax to expect. 
   - `ecmaVersion: 'latest'` means it understands modern JS features. 
   - `sourceType: 'module'` means you're using ES6 imports/exports instead of CommonJS.
-- `rules`: Your customizations that override Airbnb's defaults.
+- `rules`: Your customizations that override Airbnb's defaults. Each value represents a change that we've made to the default set of rules provided by Airbnb.
 
-Look through some of the rules. Try commenting them out and see how the errors produced by the linter changes.
+Look through some of the rules. Try commenting them out (such as the `no-console` rule) and see how the errors produced by the linter changes.
 
 ### Turn on Auto Save and Format on Save
 
@@ -85,7 +89,7 @@ Look through some of the rules. Try commenting them out and see how the errors p
 * Search "Auto Save" and select "onFocusChange" from the dropdown
 * Search "Format on Save" and check the box.
 
-This combination of settings will save you some of the hassle of cleaning up your code. It mostly helps with indentation and spacing. However, it won't catch everything. 
+This combination of settings mostly helps with indentation and spacing. It will save you some time but it won't catch everything. 
 
 Run the linter again:
 
@@ -93,7 +97,9 @@ Run the linter again:
 npm run lint
 ```
 
-You'll notice there are still some errors. Fix them until the linter shows no errors!
+There are still some errors! Fix them until the linter shows no errors.
+
+**Tip:** Use Command+Click on a linting error to jump straight to the location of the error in your code.
 
 ### Key Takeaways
 
@@ -102,38 +108,16 @@ You'll notice there are still some errors. Fix them until the linter shows no er
 * Linter configurations can be changed depending on which stage of development you are in.
 
 ## Grammarly
-In this activity, you will practice identifying common writing errors in technical documentation, then compare your findings with Grammarly's suggestions. This will help you understand the importance of proofreading and using available tools before submitting professional work.
 
-### Learning Objectives
-- Identify common grammar, spelling, and punctuation errors in technical writing
-- Learn to use Grammarly as a proofreading tool
-- Understand that submitting error-filled writing is unacceptable in professional contexts
-- Develop strategies for catching errors in your own work
+It is **unacceptable** to submit writing that has typos, grammar mistakes, missing punctuation, etc...
+
+Using a tool like Grammarly is not cheating. In fact, your future career depends on it.
 
 ### Part 1: Manual Error Detection
 
-You will receive three sample responses to JavaScript debugging questions. Each response contains accurate technical content, but varies in writing quality:
+The response in `src/short-response.md` contains accurate technical content, but has many writing errors.
 
-- **Response 1**: Contains many obvious errors (spelling, punctuation, capitalization, run-on sentences)
-- **Response 2**: Contains a moderate number of errors (mix of obvious and subtle mistakes)
-- **Response 3**: Contains only subtle errors (missing punctuation, wrong word choices)
-
-**Your Task:**
-
-**WITHOUT using any spell-check or grammar tools**, carefully read each response and document all the errors you find.
-
-For each error, record:
-1. The incorrect text (quote it or describe its location)
-2. The type of error (spelling, punctuation, grammar, capitalization, etc.)
-3. Your proposed correction
-
-**Example format:**
-```
-Response 1, Error #1
-Incorrect: "its thrown"
-Type: Missing apostrophe in contraction
-Correction: "it's thrown"
-```
+**WITHOUT using any spell-check or grammar tools**, carefully read each response and document all the errors you find. We've started this process for you.
 
 **Tips for finding errors:**
 - Read slowly, sentence by sentence
@@ -159,7 +143,7 @@ After completing your manual analysis:
 
 ### Part 3: Reflection
 
-Answer these questions:
+In your groups, discuss:
 
 1. **What surprised you about comparing your findings to Grammarly's suggestions?**
 
